@@ -1,0 +1,1 @@
+from app import app #the flask application is app, a member of the app package
