@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template, flash, redirect, url_for, request
-from app.forms import LoginForm
+from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 from werkzeug.urls import url_parse
@@ -9,7 +9,6 @@ from werkzeug.urls import url_parse
 @app.route('/index') #when there is a request for the URLs, Flask is going to invoke
 @login_required      #and pass the return value back as a response
 def index():
-	user = {'username': 'Matthew'}
 	posts = [
         {
             'author': {'username': 'John'},
@@ -20,7 +19,7 @@ def index():
             'body': 'The Avengers movie was so cool!'
         }
     ]
-	return render_template('index.html', title='Home', user=user, posts=posts)
+	return render_template('index.html', title='Home', posts=posts)
 
 @app.route('/login', methods=['GET', 'POST']) #by default, the method is get
 def login():
@@ -43,4 +42,18 @@ def login():
 def logout():
 	logout_user()
 	return redirect(url_for('index'))
+
+@app.route('/register', methods=['GET', 'POST']) #by default, the method is get
+def register():
+	if current_user.is_authenticated: #if a logged in user goes to the login page, he will be redirected out
+		return redirect(url_for('index'))
+	form = RegistrationForm()
+	if form.validate_on_submit(): #does the validating of the data
+		new_user = User(username=form.username.data, email=form.email.data)
+		new_user.set_password(form.password.data)
+		db.session.add(new_user)
+		db.session.commit()
+		flash('Your registration is complete!')
+		return redirect(url_for('login'))
+	return render_template('register.html', title='Register', form=form)
 
