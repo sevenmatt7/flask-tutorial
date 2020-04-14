@@ -17,3 +17,6 @@ class UserModelCase(unittest.TestCase):
 		u.set_password('cat')
 		self.assertFalse(u.check_password('dog'))
 		self.assertTrue(u.check_password('cat'))
+
+if __name__ == '__main__':
+	unittest.main(verbosity=2)
