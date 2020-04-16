@@ -1,0 +1,71 @@
+2020-04-14 16:55:42,500 ERROR: Exception on /index [GET] [in C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\flask\app.py:1892]
+Traceback (most recent call last):
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\engine\base.py", line 1248, in _execute_context
+    cursor, statement, parameters, context
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\engine\default.py", line 590, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: attempt to write a readonly database
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\flask\app.py", line 1948, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\flask\app.py", line 2242, in preprocess_request
+    rv = func()
+  File "C:\Users\masugiri\Desktop\microblog\app\routes.py", line 14, in before_request
+    db.session.commit()
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\orm\scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\orm\session.py", line 1036, in commit
+    self.transaction.commit()
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\orm\session.py", line 503, in commit
+    self._prepare_impl()
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\orm\session.py", line 482, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\orm\session.py", line 2496, in flush
+    self._flush(objects)
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\orm\session.py", line 2637, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\orm\session.py", line 2597, in _flush
+    flush_context.execute()
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\orm\unitofwork.py", line 422, in execute
+    rec.execute(self)
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\orm\unitofwork.py", line 589, in execute
+    uow,
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\orm\persistence.py", line 236, in save_obj
+    update,
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\orm\persistence.py", line 995, in _emit_update_statements
+    statement, multiparams
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\engine\base.py", line 984, in execute
+    return meth(self, multiparams, params)
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\sql\elements.py", line 293, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\engine\base.py", line 1103, in _execute_clauseelement
+    distilled_params,
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\engine\base.py", line 1288, in _execute_context
+    e, statement, parameters, cursor, context
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\engine\base.py", line 1482, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\engine\base.py", line 1248, in _execute_context
+    cursor, statement, parameters, context
+  File "C:\Users\masugiri\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.7_qbz5n2kfra8p0\LocalCache\local-packages\Python37\site-packages\sqlalchemy\engine\default.py", line 590, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) attempt to write a readonly database
+[SQL: UPDATE user SET last_seen=? WHERE user.id = ?]
+[parameters: ('2020-04-14 08:55:42.498159', 1)]
+(Background on this error at: http://sqlalche.me/e/e3q8)
